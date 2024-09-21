@@ -1,0 +1,31 @@
+Game choices
+game_choices = {
+    "snake": 1,
+    "water": 2,
+    "gun": 3
+}
+
+Get user input
+user_choice = input("Enter your choice (snake, water, gun): ").lower()
+
+Validate user input
+while user_choice not in game_choices:
+    user_choice = input("Invalid choice. Enter your choice (snake, water, gun): ").lower()
+
+Computer's choice (fixed for simplicity)
+computer_choice = 1
+
+Determine winner
+def determine_winner(user, computer):
+    if user == computer:
+        return "Draw match"
+    elif (user == 1 and computer == 2) or (user == 2 and computer == 1):
+        return "Snakes drink water, you " + ("lose" if user == 2 else "win")
+    elif (user == 1 and computer == 3) or (user == 3 and computer == 1):
+        return "Gun kills snake, you " + ("win" if user == 3 else "lose")
+    elif (user == 2 and computer == 3) or (user == 3 and computer == 2):
+        return "Gun drowns in water, you " + ("win" if user == 2 else "lose")
+
+Print result
+print(determine_winner(game_choices[user_choice], computer_choice))
+``]
